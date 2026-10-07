@@ -21,13 +21,13 @@ Wait until the ToDo Pods report `Running` and `READY 1/1` before testing.
 ## Call the ClusterIP Service from BusyBox
 
 The ClusterIP Service is named `kube2py-service` and exposes port `80`.
-Because the BusyBox Pod is in the `todoapp` namespace, use the fully qualified
-Service DNS name:
+The BusyBox Pod is in the same `my-namespace` namespace as the Service, so use
+the Service DNS name:
 
 ```powershell
 kubectl apply -f busybox.yml
-kubectl wait --for=condition=Ready pod/busybox -n todoapp --timeout=60s
-kubectl exec -n todoapp busybox -- curl -i http://kube2py-service.my-namespace.svc.cluster.local/
+kubectl wait --for=condition=Ready pod/busybox -n my-namespace --timeout=60s
+kubectl exec -n my-namespace busybox -- curl -i http://kube2py-service.my-namespace.svc.cluster.local/
 ```
 
 An HTTP response from the ToDo application confirms that in-cluster DNS and

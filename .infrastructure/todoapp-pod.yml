@@ -10,6 +10,17 @@ spec:
   - name: todoapp
     image: bodya4243/todoapp:1.0.1
     imagePullPolicy: Always
+    env:
+    - name: PYTHONUNBUFFERED
+      value: "1"
+    - name: SECRET_KEY
+      value: "@e2(yx)v&tgh3_s=0yja-i!dpebxsz^dg47x)-k&kq_3zf*9e*"
+    - name: DEBUG
+      value: "True"
+    - name: DATABASE_ENGINE
+      value: "django.db.backends.sqlite3"
+    - name: DATABASE_NAME
+      value: "/app/db.sqlite3"
     ports:
     - containerPort: 8080
     livenessProbe:
@@ -38,6 +49,17 @@ spec:
   containers:
   - name: todoapp
     image: bodya4243/todoapp:1.0.1
+    env:
+    - name: PYTHONUNBUFFERED
+      value: "1"
+    - name: SECRET_KEY
+      value: "@e2(yx)v&tgh3_s=0yja-i!dpebxsz^dg47x)-k&kq_3zf*9e*"
+    - name: DEBUG
+      value: "True"
+    - name: DATABASE_ENGINE
+      value: "django.db.backends.sqlite3"
+    - name: DATABASE_NAME
+      value: "/app/db.sqlite3"
     ports:
     - containerPort: 8080
     livenessProbe:
